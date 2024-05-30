@@ -248,6 +248,7 @@
   "MessageIsRequired": "Message is required",
   "Already_present_in_the_dashboard_json": "........",
   "CreateTicket": "Create ticket",
+  "SendWhatsappMessage": "Send Whatsapp Message",
   "Requester": "Requester",
   "ViewRequesterDetails": "View requester details",
   "Priority": "Priority",

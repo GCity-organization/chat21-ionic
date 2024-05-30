@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular'
 import { EventsService } from 'src/app/services/events-service'
 import { CreateTicketPage } from 'src/app/modals/create-ticket/create-ticket.page'
 import { CustomTranslateService } from 'src/chat21-core/providers/custom-translate.service'
+import { SendWhatsappMessagePage } from 'src/app/modals/create-whatsapp-message/create-whatsapp-message.page'
 @Component({
   selector: 'header-conversations-list',
   templateUrl: './header-conversations-list.component.html',
@@ -37,7 +38,8 @@ export class HeaderConversationsList implements OnInit {
     const keys = [
       'CreateTicket',
       'ViewArchivedConversations',
-      'ViewContactsList'
+      'ViewContactsList',
+      'SendWhatsappMessage'
     ];
     this.translationMap = this.translateService.translateLanguage(keys);
   }
@@ -105,6 +107,21 @@ export class HeaderConversationsList implements OnInit {
     // const attributes = {  enableBackdropDismiss: false };
     const modal = await this.modalController.create({
       component: CreateTicketPage,
+      // componentProps: attributes,
+      swipeToClose: false,
+      backdropDismiss: false,
+    })
+    modal.onDidDismiss().then((detail: any) => {
+      // console.log('[DDP-HEADER] ', detail.data)
+    })
+    modal.present()
+    this.createTicketModal = modal
+  }
+
+  async presentSendWhatsappMessageModal() {
+    // const attributes = {  enableBackdropDismiss: false };
+    const modal = await this.modalController.create({
+      component: SendWhatsappMessagePage,
       // componentProps: attributes,
       swipeToClose: false,
       backdropDismiss: false,

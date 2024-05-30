@@ -20,6 +20,10 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
+              "src/assets",
+              "src/chat-config-template.json",
+              "src/chat-config.json",
+              "src/firebase-config.json",
               "src/chat-config-pre.json",
               "src/chat-config-mqtt.json",
               "src/chat-config-pre-test.json",
@@ -28,8 +32,6 @@
               "src/chat-config-native-prod.json",
               "src/firebase-messaging-sw.js",
               "src/manifest.json",
-              "src/chat-config-template.json",
-              "src/chat-config.json",
               "src/chat-config-dev.json",
               {
                 "glob": "**/*",
@@ -56,12 +58,8 @@
                 "inject": true
               }
             ],
-            "scripts": [
-              "src/assets/js/mqtt/4.1.0/mqtt.min.js"
-            ],
-            "allowedCommonJsDependencies": [
-              "moment"
-            ],
+            "scripts": ["src/assets/js/mqtt/4.1.0/mqtt.min.js"],
+            "allowedCommonJsDependencies": ["moment"],
             "aot": false,
             "vendorChunk": true,
             "extractLicenses": false,
@@ -186,9 +184,7 @@
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -237,6 +233,7 @@
     }
   },
   "cli": {
+    "analytics": false,
     "defaultCollection": "@ionic/angular-toolkit"
   },
   "schematics": {

@@ -63,6 +63,10 @@ const routes: Routes = [
     loadChildren: () => import('./modals/create-ticket/create-ticket.module').then( m => m.CreateTicketPageModule)
   },
   {
+    path: 'create-whatsapp-message',
+    loadChildren: () => import('./modals/create-whatsapp-message/create-whatsapp-message.module').then( m => m.SendWhatsappMessageModule)
+  },
+  {
     path: 'create-canned-response',
     loadChildren: () => import('./modals/create-canned-response/create-canned-response.module').then( m => m.CreateCannedResponsePageModule)
   },

@@ -1,0 +1,85 @@
+ion-toolbar{
+    --background: var(--modal-header-background);
+    &:not(.mobile){
+        // --background: var(--list-bkg-color);
+        border: none;
+    }
+    &.mobile{
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    ion-button,
+    ion-title{
+        --color: var(--modal-icon-color);
+    }
+}
+ion-content{
+    --background: var(--modal-content-background);
+}
+
+.requester-role-or-type {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.custom-ion-input {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    height: 36px;
+    color: #333;
+    background-color: #fff;
+    margin-top: 5px;
+}
+
+.custom-ion-textarea {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    color: #333;
+    background-color: #fff;
+    margin-top: 5px !important;
+}
+
+.custom-create-ticket-label {
+    font-size: 14px;
+    color: var(--label-color);
+    font-weight: 500;
+}
+
+.custom-create-ticket-label-to-left {
+    font-size: 14px;
+    color: #0f62ff;
+    font-weight: 500;
+    float: right;
+    cursor: pointer;
+}
+
+.open-requester-details-disable {
+    // cursor: not-allowed;
+    // opacity: 0.5;
+    display: none;
+}
+.ion-grid-custom-padding {
+    padding: 5px 25px;
+    height: 100%;
+}
+
+.center-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-btn{
+    min-width: 153px;
+    background: var(--button-background-color);
+    color: var(--button-text-color);
+
+    ion-icon{
+        color: var(--button-text-color);
+        font-size: 1.9em;
+    }
+    ion-spinner{
+        color: var(--button-text-color);
+        margin: 0px 0.3em 0px -0.3em;
+    }
+}

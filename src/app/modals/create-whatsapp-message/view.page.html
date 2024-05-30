@@ -1,0 +1,145 @@
+<ion-header no-border class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>{{'SendWhatsappMessage' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button
+        ion-button
+        fill="clear"
+        (click)="closeModalCreateTicketModal()"
+      >
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid
+    class="ion-grid-custom-padding"
+    [ngClass]="{'center-content': ticketCreationCompleted === true }"
+  >
+    <ion-row *ngIf="ticketCreationCompleted === false">
+      <ion-col size="12">
+        <ion-label class="custom-create-ticket-label" position="stacked"
+          >{{ 'Phone Number' | translate }} *</ion-label
+        >
+        <ion-input
+          [(ngModel)]="phoneNumber"
+          type="text"
+          class="custom-ion-input"
+        ></ion-input>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-label class="custom-create-ticket-label"
+          >{{'Message templates' | translate }}</ion-label
+        >
+        <ng-select
+          class="create-ticket-custom-select"
+          name="users_and_leads"
+          [items]="templates"
+          bindLabel="name"
+          bindValue="id"
+          [(ngModel)]="selectedTemplate"
+          [virtualScroll]="true"
+          (change)="selectRequester($event)"
+          placeholder="{{'SelectTemplate' | translate}}"
+          [loading]="loadingTemplates"
+          loadingText="Loading..."
+        >
+          <ng-template ng-label-tmp let-item="item">
+            <span style="font-weight: 400">
+              {{ item.name }}-{{ item.language }}
+            </span>
+            <span class="requester-role-or-type"> ({{item.description}}) </span>
+          </ng-template>
+        </ng-select>
+      </ion-col>
+
+      <!-- <ion-col size="12">
+        <ion-label class="custom-create-ticket-label"
+          >{{ 'SelectAssignee' | translate }}</ion-label
+        >
+        <ng-select
+          class="create-ticket-custom-select"
+          name="assignee"
+          [(ngModel)]="assignee_id"
+          [searchable]="true"
+          [clearable]="false"
+          placeholder="{{ 'SelectAssignee' | translate }}"
+          (change)="selectedAssignee()"
+          [loading]="loadingAssignee"
+          loadingText="Loading..."
+        >
+          <ng-option
+            *ngFor="let assignee of projectUserBotsAndDeptsArray"
+            [value]="assignee.id"
+          >
+            {{assignee.name}}
+          </ng-option>
+        </ng-select>
+      </ion-col> -->
+
+      <!-- <ion-col size="12">
+        <ion-label class="custom-create-ticket-label"
+          >{{ 'Message' | translate }} *</ion-label
+        >
+        <ion-textarea
+          [(ngModel)]="ticket_message"
+          type="text"
+          class="custom-ion-textarea"
+          rows="2"
+          placeholder=""
+        ></ion-textarea>
+      </ion-col> -->
+
+      <ion-col size="12" style="text-align: center">
+        <ion-button
+          color="primary"
+          class="submit-btn"
+          type="submit"
+          (click)="sendWhatsappMessage()"
+          [disabled]="phoneNumber === undefined || phoneNumber?.length === 0"
+        >
+          <ion-icon
+            *ngIf="showSpinnerCreateTicket === false"
+            slot="start"
+            name="add-circle-outline"
+          ></ion-icon>
+          <ion-spinner
+            *ngIf="showSpinnerCreateTicket === true"
+            name="bubbles"
+            duration="2"
+          ></ion-spinner>
+          {{'SendWhatsappMessage' | translate}}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <!-- class="ion-align-items-center"  -->
+    <ion-row
+      style="text-align: center"
+      *ngIf="ticketCreationCompleted === true"
+    >
+      <ion-col size="12">
+        <ion-icon
+          style="font-size: 3em"
+          color="success"
+          name="checkmark-outline"
+        ></ion-icon>
+      </ion-col>
+      <ion-col size="12">
+        <label> {{'TicketSuccessfullyCreated' | translate }}</label>
+      </ion-col>
+      <ion-col size="12" class="ion-padding-vertical">
+        <ion-button
+          color="success"
+          class="submit-btn"
+          type="submit"
+          (click)="closeModalCreateTicketModal()"
+        >
+          {{'Continue' | translate }}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
